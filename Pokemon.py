@@ -1,5 +1,6 @@
 import os
 import random
+import time
 os.system ("cls")
 hp_inimigo = 100
 hp_jogador = 100
@@ -111,22 +112,21 @@ if pokemon == 1:
         print("3 -Fugir (Tentar correr)")
         escolha = input("Digite o número da sua ação (1/2/3): ")
         if escolha == '1':
-            # Ataque: Gera um dano aleatório entre 15 e 25
             dano = random.randint(1, 10)
             hp_inimigo -= dano
             print(f"Mukip usou Jato d'agua e causou {dano} de dano!")
+            time.sleep(2)
             
         elif escolha == '2':
-            # Cura: Recupera um valor aleatório entre 20 e 30
             cura = random.randint(1, 5)
             hp_jogador += cura
-            # O 'if' abaixo garante que a vida não passe do limite máximo (100)
+            
             if hp_jogador > 100:
                 hp_jogador = 100
             print(f"Você usou uma Poção! Mudkip recuperou {cura} de HP.")
+            time.sleep(2)
             
         elif escolha == '3':
-            # Fuga: Encerra o laço 'while'
             print("Mudkip fugiu da batalha em segurança!")
             batalha_ativa = False
             continue # O 'continue' pula para o final e encerra o loop imediatamente
@@ -187,15 +187,17 @@ elif pokemon == 2:
             dano = random.randint(1, 10)
             hp_inimigo -= dano
             print(f"Evee usou Cabeçada e causou {dano} de dano!")
+            time.sleep(2)
             
         elif escolha == '2':
             # Cura: Recupera um valor aleatório entre 20 e 30
             cura = random.randint(1, 5)
             hp_jogador += cura
-            # O 'if' abaixo garante que a vida não passe do limite máximo (100)
+            
             if hp_jogador > 100:
                 hp_jogador = 100
             print(f"Você usou uma Poção! Evee recuperou {cura} de HP.")
+            time.sleep(2)
             
         elif escolha == '3':
             # Fuga: Encerra o laço 'while'
@@ -259,21 +261,22 @@ elif pokemon == 3:
                 dano = random.randint(1, 10)
                 hp_inimigo -= dano
                 print(f"Pikachu usou Choque do Trovão e causou {dano} de dano!")
+                time.sleep(2)
                 
             elif escolha == '2':
                 # Cura: Recupera um valor aleatório entre 20 e 30
                 cura = random.randint(1, 5)
                 hp_jogador += cura
-                # O 'if' abaixo garante que a vida não passe do limite máximo (100)
+               
                 if hp_jogador > 100:
                     hp_jogador = 100
                 print(f"Você usou uma Poção! Pikachu recuperou {cura} de HP.")
+                time.sleep(2)
                 
             elif escolha == '3':
-                # Fuga: Encerra o laço 'while'
                 print("Pikachu fugiu da batalha em segurança!")
                 batalha_ativa = False
-                continue # O 'continue' pula para o final e encerra o loop imediatamente
+                continue 
             else:
                 print("Opção invalida")
             derrota = """ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⡀⢀⠀⢠⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -300,17 +303,14 @@ elif pokemon == 3:
                 print("\nPorygon desmaiou!")
                 print("VITÓRIA! Você ganhou 500 PokéDollars.")
                 batalha_ativa = False
-                continue # Sai do loop antes que o inimigo morto tente atacar
+                continue
 
-            # --- 5. TURNO DO INIMIGO ---
             print("\nTurno do inimigo...")
-            # O inimigo ataca automaticamente se o jogo não acabou
             dano_inimigo = random.randint(1, 10)
             hp_jogador -= dano_inimigo
             print(f"Porigon usou Psiquico e causou {dano_inimigo} de dano no Pikachu!\n")
 
-            # --- 6. CONDIÇÃO DE DERROTA ---
-            # Verifica se o ataque do inimigo derrotou o jogador
+
             if hp_jogador <= 0:
                 print("Pikachu desmaiou!")
                 print("DERROTA! Você correu de volta para o Centro Pokémon.")
